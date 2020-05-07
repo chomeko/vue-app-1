@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>あはははは</title>
+
+  <style>
+    .container {
+      width: 100%;
+      height: 100vh;
+      text-align: center;
+      background: #000;
+      position: relative;
+    }
+
+    button {
+      width: 200px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      background: rgb(119, 3, 3);
+      color: #ffffff;
+      outline: none;
+      border: 0;
+      box-shadow: 2px 3px 2px 2px rgba(0, 0, 0, 0.7);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .text {
+      margin: 0;
+      padding-top: 60px;
+      font-size: 80px;
+      color: rgb(119, 3, 3);
+      z-index: 100;
+    }
+
+
+    .btnactive {
+      opacity: 0.2;
+    }
+
+    .active {
+      transition: all 1s;
+      background-image: url(img/horror-2581018_1920.jpg);
+      background-position: center;
+      background-size: cover;
+    }
+
+    .img {
+      width: 100%;
+      height: 100%;
+      background-image: url(img/horror-2581018_1920.jpg);
+      background-position: center;
+      background-size: cover;
+    }
+
+    .fade1-enter-active{
+      transition: opacity 2s ease-out;
+    }
+    .fade1-enter, .v-leave-to　{
+      opacity: 0;
+    }
+    .fade2-enter-active{
+      transition: opacity 2s 1s;
+    }
+    .fade2-enter, .v-leave-to　{
+      opacity: 0;
+    }
+    .fade3-enter-active{
+      transition: opacity 2s 2s;
+    }
+    .fade3-enter, .v-leave-to　{
+      opacity: 0;
+    }
+    .fade4-enter-active{
+      transition: opacity 2s 3s;
+    }
+    .fade4-enter, .v-leave-to　{
+      opacity: 0;
+    }
+    .fade5-enter-active{
+      transition: opacity 2s 4s;
+    }
+    .fade5-enter, .v-leave-to　{
+      opacity: 0;
+    }
+
+    .v-enter-active{
+      transition: opacity 5s ease-out;
+    }
+    .v-enter, .v-leave-to　{
+      opacity: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app" class="container">
+    <transition appear name="fade1">
+      <p v-show="text" class="text">ねえ...</p>
+    </transition>
+    <transition appear name="fade2">
+      <p v-show="text" class="text">ねえ....</p>
+    </transition>
+    <transition appear name="fade3">
+      <p v-show="text" class="text">ねえ....</p>
+    </transition>
+    <transition appear name="fade4">
+      <p v-show="text" class="text">ねえ....</p>
+    </transition>
+    <transition appear>
+      <div v-show="img" class="img"></div>
+    </transition>
+    <transition appear name="fade5">
+      <button @click="btnpush" :class="{btnactive: isbtnActive}">
+        <p v-if="btntext">消す</p>
+        <p v-else>つける</p>
+      </button>
+    </transition>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        text: true,
+        img: false,
+        isbtnActive: false,
+      },
+      methods: {
+        btnpush: function() {
+          this.btntext = !this.btntext;
+          this.isbtnActive = !this.isbtnActive;
+          this.text = !this.text;
+          this.img = !this.img;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
