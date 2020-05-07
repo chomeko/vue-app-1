@@ -122,6 +122,7 @@
         <p v-else>つける</p>
       </button>
     </transition>
+    <audio id="sound" src="./mp3/「ぎゃああーー！」.mp3" type="audio/mp3"></audio>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -139,6 +140,8 @@
           this.isbtnActive = !this.isbtnActive;
           this.text = !this.text;
           this.img = !this.img;
+          var audio = document.getElementById('sound');
+          audio.play();
         }
       }
     })
